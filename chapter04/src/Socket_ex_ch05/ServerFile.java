@@ -136,7 +136,7 @@ public class ServerFile extends JFrame implements ActionListener {
 			textArea.append("서버를 시작 하겠습니다.\n");
 			connect(); // 쓰레드를 줘서 대기하라고 함 .accept
 		} catch (IOException e) {
-			// 예외처리 메세지 문구가 뜨는 창
+			
 			JOptionPane.showMessageDialog(null, "이미 사용중인 포트입니다.", "알림",
 					JOptionPane.ERROR_MESSAGE);
 			btnServerStart.setEnabled(true);
@@ -282,7 +282,7 @@ public class ServerFile extends JFrame implements ActionListener {
 					if (u.nickName.equals(user)) {
 						u.sendmessage("Note/" + nickName + "@" + note);
 					}
-				}
+				}	
 			} else if (protocol.equals("CreateRoom")) {
 				// 1.현재같은방이 존재하는지 확인한다.
 				for (int i = 0; i < vcRoom.size(); i++) {
