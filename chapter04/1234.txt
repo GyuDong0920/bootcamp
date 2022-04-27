@@ -1,0 +1,27 @@
+서버를 실행하겠습니다.
+1234port 접속 대기중...
+<<a>> 입장
+1234port 접속 대기중...
+<<b>> 입장
+1234port 접속 대기중...
+<<a>>CreateRoom/aa
+<<b>>JoinRoom/aa
+<<c>> 입장
+1234port 접속 대기중...
+<<c>>JoinRoom/aa
+<<d>> 입장
+1234port 접속 대기중...
+<<d>>JoinRoom/aa
+<<a>>Chatting/aa/무여
+<<b>>Chatting/aa/andu
+<<b>>Chatting/aa/
+b: 사용자 접속이 끊어졌습니다.
+<<c>>OutRoom/aa
+<<a>>OutRoom/aa
+<<d>>OutRoom/aa
+a: 사용자 접속이 끊어졌습니다.
+<<d>>OutRoom/null
+<<c>>OutRoom/null
+c: 사용자 접속이 끊어졌습니다.
+<<d>>OutRoom/null
+d: 사용자 접속이 끊어졌습니다.
