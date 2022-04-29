@@ -104,16 +104,14 @@ public class ClientNetWorkService implements ClientListInterFace {
 
 	public void sendmessage(String msg) {
 
-		System.out.println("ddddddddddd : " + msg);
-		
-//		try {
-//			System.out.println("ddddddddddd : " + msg);
-////			dos.writeUTF(msg);
-////			dos.flush();
-//
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			System.out.println("ddddddddddd : " + msg);
+			dos.writeUTF(msg);
+			dos.flush();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

@@ -29,9 +29,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ServerGUI extends JFrame implements ActionListener {
+public class ServerGUI extends JFrame implements ActionListener, ServerInterFace {
 
-	ServerGUI mContext = this;
 	// GUI
 	protected JTextField textField;
 	protected JTextArea textArea;
@@ -46,11 +45,11 @@ public class ServerGUI extends JFrame implements ActionListener {
 	Vector v = new Vector();
 	JList vList = new JList(v);
 
-	ServerNetWork serverNetWork;
+	ServerNetWork netWork;
 
 	public ServerGUI() {
 
-		serverNetWork = new ServerNetWork(mContext);
+		this.netWork = new ServerNetWork(this);
 		try {
 			img = ImageIO.read(new File("images/kakao.png"));
 		} catch (IOException e) {
@@ -66,7 +65,6 @@ public class ServerGUI extends JFrame implements ActionListener {
 		exitButton.requestFocus();
 		loadLogButton.requestFocus();
 		textField.requestFocus();
-
 	}
 
 	private void init() {
@@ -194,8 +192,8 @@ public class ServerGUI extends JFrame implements ActionListener {
 					textArea.append("0 ~ 65535 사이의 값을 입력해주세요.\n");
 
 				} else if (textField.getText().length() != 0) {
-					serverNetWork.setPort(Integer.parseInt(textField.getText()));
-					serverNetWork.setNetwork();
+					netWork.setPort(Integer.parseInt(textField.getText()));
+					netWork.setNetwork();
 					textField.setEditable(false);
 					startbutton.setEnabled(false);
 					stopButton.setEnabled(true);
@@ -209,10 +207,9 @@ public class ServerGUI extends JFrame implements ActionListener {
 
 		} else if (e.getSource() == stopButton) {
 			try {
-				serverNetWork.getServerSocket().close();
-				serverNetWork.getVc().removeAllElements();
-				serverNetWork.getChRoom().removeAllElements();
-
+				netWork.getServerSocket().close();
+				vc.removeAllElements();
+				chRoom.removeAllElements();
 				textField.setEditable(true);
 				stopButton.setEnabled(false);
 				startbutton.setEnabled(true);

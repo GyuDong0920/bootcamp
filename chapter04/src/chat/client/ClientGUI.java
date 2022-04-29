@@ -59,7 +59,8 @@ public class ClientGUI extends JFrame implements ActionListener, ClientListInter
 		mainPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(mainPanel);
 		mainPanel.setLayout(null);
-
+		setResizable(false);
+		
 		JTabbedPane Jtab = new JTabbedPane(JTabbedPane.TOP);
 		Jtab.setBounds(5, 5, 375, 600);
 		mainPanel.add(Jtab);
@@ -233,14 +234,14 @@ public class ClientGUI extends JFrame implements ActionListener, ClientListInter
 
 			String note = JOptionPane.showInputDialog("보낼메세지");
 			if (note != null) {
-				netWorkService.sendmessage("Note/" + user + "@" + note);
+				netWorkService.sendmessage("Note/" + netWorkService.getUserId()  + "@" + note);
 			}
 		} else if (e.getSource() == joinRoomBtn) {
 			System.out.println("방입장버튼 클릭");
 			String joinRoom = (String) roomList.getSelectedValue();
 			outRoomBtn.setEnabled(true);
 			makeRoomBtn.setEnabled(false);
-			netWorkService.sendmessage("JoinRoom/" + joinRoom);
+			netWorkService.sendmessage("JoinRoom/" + joinRoom + "@" +  netWorkService.getUserId());
 			roomUserList.setListData(userVclist);
 		} else if (e.getSource() == chattingTextField) {
 			if (chattingTextField.getText().length() == 0) {
@@ -253,7 +254,10 @@ public class ClientGUI extends JFrame implements ActionListener, ClientListInter
 			String roomName = JOptionPane.showInputDialog("방 이름을 입력하세요");
 			
 			if (roomName != null) {
-				netWorkService.sendmessage("CreateRoom/" + roomName + "@" + netWorkService.getUserId());
+				netWorkService.sendmessage("CreateRoom/" + netWorkService.getUserId()  + "@" + roomName);
+				makeRoomBtn.setEnabled(false);
+				joinRoomBtn.setEnabled(false);
+				outRoomBtn.setEnabled(true);
 			}
 		} else if (e.getSource() == outRoomBtn) {
 			System.out.println("방나가기버튼클릭.");

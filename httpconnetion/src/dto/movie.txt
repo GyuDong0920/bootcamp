@@ -1,0 +1,62 @@
+{
+  "status": "ok",
+  "status_message": "Query was successful",
+  "data": {
+    "movie_count": 40971,
+    "limit": 20,
+    "page_number": 1,
+    "movies": [
+      {
+        "id": 41769,
+        "url": "https://yts.mx/movies/the-ambulance-2005",
+        "imdb_code": "tt0400156",
+        "title": "The Ambulance",
+        "title_english": "The Ambulance",
+        "title_long": "The Ambulance (2005)",
+        "slug": "the-ambulance-2005",
+        "year": 2005,
+        "rating": 5.3,
+        "runtime": 80,
+        "genres": [
+          "Action",
+          "Drama",
+          "Thriller"
+        ],
+        "summary": "",
+        "description_full": "",
+        "synopsis": "",
+        "yt_trailer_code": "",
+        "language": "da",
+        "mpa_rating": "",
+        "background_image": "https://yts.mx/assets/images/movies/the_ambulance_2005/background.jpg",
+        "background_image_original": "https://yts.mx/assets/images/movies/the_ambulance_2005/background.jpg",
+        "small_cover_image": "https://yts.mx/assets/images/movies/the_ambulance_2005/small-cover.jpg",
+        "medium_cover_image": "https://yts.mx/assets/images/movies/the_ambulance_2005/medium-cover.jpg",
+        "large_cover_image": "https://yts.mx/assets/images/movies/the_ambulance_2005/large-cover.jpg",
+        "state": "ok",
+        "torrents": [
+          {
+            "url": "https://yts.mx/torrent/download/84A0326B8D48D3D5CD9F5AB203DD20CBBEBC62BC",
+            "hash": "84A0326B8D48D3D5CD9F5AB203DD20CBBEBC62BC",
+            "quality": "720p",
+            "type": "web",
+            "seeds": 0,
+            "peers": 0,
+            "size": "696.97 MB",
+            "size_bytes": 730826015,
+            "date_uploaded": "2022-04-28 21:31:48",
+            "date_uploaded_unix": 1651174308
+          },
+          {
+            "url": "https://yts.mx/torrent/download/5C016283C709B9DBD49281355D5EC89FFB710BFF",
+            "hash": "5C016283C709B9DBD49281355D5EC89FFB710BFF",
+            "quality": "1080p",
+            "type": "web",
+            "seeds": 0,
+            "peers": 0,
+            "size": "1.4 GB",
+            "size_bytes": 1503238554,
+            "date_uploaded": "2022-04-28 23:26:07",
+            "date_uploaded_unix": 1651181167
+          }
+        ]
