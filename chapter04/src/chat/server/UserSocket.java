@@ -52,7 +52,7 @@ public class UserSocket extends Thread  {
 ////			// 기존 유저에게 알림
 			mContext.getServerNetWork().announCement("NewUser/" + userName);
 //
-//			// 자신에게 현재 접속 중인 유저를 알린다.
+			// 자신에게 현재 접속 중인 유저를 알린다.
 //			for (int i = 0; i < mContext.vc.size(); i++) {
 //				User user = mContext.vc.elementAt(i);
 //				sendMessage("OldUser/" + user.userName);
@@ -84,8 +84,8 @@ public class UserSocket extends Thread  {
 						System.out.println("-----------------");
 						System.out.println("msg : " + msg);
 						System.out.println("-----------------");
-//						mContext.getTextArea().append("<<" + userName + ">>" + msg + "\n");
-//						mContext.getServerNetWork().inmessage(msg);
+						mContext.getTextArea().append("<<" + userName + ">>" + msg + "\n");
+						mContext.getServerNetWork().inmessage(msg);
 					} catch (Exception e) {
 						try {
 							// 나갔음

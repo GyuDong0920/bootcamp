@@ -57,8 +57,7 @@ public class ServerNetWork {
 						socket = serverSocket.accept();
 						UserSocket userSocket = new UserSocket(socket, mContext);
 						userSocket.start();
-						
-						
+
 					} catch (IOException e) {
 						mContext.getTextArea().append("서버 중지 @Server ON 버튼을 눌러주세요.\n");
 						break;
@@ -71,7 +70,7 @@ public class ServerNetWork {
 		th.start();
 	}
 
-	// 전체 메세지 
+	// 전체 메세지
 	public void announCement(String str) {
 		for (int i = 0; i < vc.size(); i++) {
 			UserSocket userSocket = vc.elementAt(i);
@@ -85,20 +84,14 @@ public class ServerNetWork {
 		String protocol = st.nextToken();
 		String message = st.nextToken();
 
-		System.out.println("protocol : " + protocol);
-		System.out.println("message : " + message);
-
 		if (protocol.equals("Note")) {
 			
 		} else if (protocol.equals("CreateRoom")) {
 
-			StringTokenizer s = new StringTokenizer(message, "@");
-			String useId = s.nextToken();
-			String roomName1 = s.nextToken();
+			
 
 		} else if (protocol.equals("Chatting")) {
-			
-			
+
 		} else if (protocol.equals("JoinRoom")) {
 
 		} else if (protocol.equals("OutRoom")) {
@@ -107,6 +100,6 @@ public class ServerNetWork {
 	}
 
 	public class chatRoom {
-		
+
 	}
 }

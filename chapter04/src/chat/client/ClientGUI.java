@@ -23,8 +23,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClientGUI extends JFrame implements ActionListener, ClientListInterFace {
+public class ClientGUI extends JFrame implements ActionListener {
 
+	ClientGUI mContext = this;
 	// GUI
 	private JPanel mainPanel;
 	private JTextField hostIPTextField;
@@ -43,9 +44,15 @@ public class ClientGUI extends JFrame implements ActionListener, ClientListInter
 	private String myRoomName;
 
 	private ClientNetWorkService netWorkService;
+	private ClientProtocol protocol;
+	Vector<String> userVclist = new Vector<String>();
+	Vector<String> roomListvc = new Vector<String>();
+	JList totalList = new JList();
+	JList roomUserList = new JList();
+	JList roomList = new JList();
 
 	public ClientGUI() {
-		netWorkService = new ClientNetWorkService(this);
+		netWorkService = new ClientNetWorkService(mContext, protocol);
 		init();
 		addListener();
 

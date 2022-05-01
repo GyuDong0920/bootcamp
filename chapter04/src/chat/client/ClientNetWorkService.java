@@ -15,9 +15,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClientNetWorkService implements ClientListInterFace {
+public class ClientNetWorkService  {
 
 	// network 자원
+	private ClientGUI mContext;
+	private ClientProtocol protocol;
 	private Socket socket;
 	private String ip;
 	private int port;
@@ -27,12 +29,10 @@ public class ClientNetWorkService implements ClientListInterFace {
 	private DataInputStream dis;
 	private DataOutputStream dos;
 
-	private ClientGUI clientGUI;
-	private ClientProtocol protocol;
-
-	public ClientNetWorkService(ClientGUI gui) {
-		clientGUI = gui;
-		protocol = new ClientProtocol(gui, this);
+	public ClientNetWorkService(ClientGUI mContext, ClientProtocol protocol) {
+		this.mContext = mContext;
+		this.protocol = protocol;
+	
 	}
 
 	public void connectServer() {
@@ -56,11 +56,11 @@ public class ClientNetWorkService implements ClientListInterFace {
 			dos = new DataOutputStream(os);
 
 			// 문제발생
-			userId = clientGUI.getUserIDTextField().getText().trim();
+			userId = mContext.getUserIDTextField().getText().trim();
 			sendmessage(userId);
 			// 벡터에 유저의 id 를 저장하고 리스트 화면에 추가시켜준다.
-			userVclist.add(userId);
-			totalList.setListData(userVclist);
+			mContext.userVclist.add(userId);
+			mContext.totalList.setListData(mContext.userVclist);
 			
 			Thread cth = new Thread(new Runnable() {
 				@Override
@@ -75,12 +75,12 @@ public class ClientNetWorkService implements ClientListInterFace {
 						} catch (IOException e) {
 							e.printStackTrace();
 							try {
-								userVclist.removeAll(userVclist);
-								roomListvc.removeAll(roomListvc);
-								totalList.setListData(userVclist);
-								roomUserList.setListData(userVclist);
-								roomList.setListData(roomListvc);
-								clientGUI.getViewChatTextArea().setText("\n");
+								mContext.userVclist.removeAll(mContext.userVclist);
+								mContext.roomListvc.removeAll(mContext.roomListvc);
+								mContext.totalList.setListData(mContext.userVclist);
+								mContext.roomUserList.setListData(mContext.userVclist);
+								mContext.roomList.setListData(mContext.roomListvc);
+								mContext.getViewChatTextArea().setText("\n");
 								is.close();
 								os.close();
 								dis.close();
@@ -99,7 +99,7 @@ public class ClientNetWorkService implements ClientListInterFace {
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "연결실패!", "알림", JOptionPane.ERROR_MESSAGE);
 		} // Stream 준비완료
-		clientGUI.getConnectBtn().setEnabled(false);
+		mContext.getConnectBtn().setEnabled(false);
 	}
 
 	public void sendmessage(String msg) {

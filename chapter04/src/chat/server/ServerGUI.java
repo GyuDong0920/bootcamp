@@ -135,7 +135,7 @@ public class ServerGUI extends JFrame implements ActionListener {
 		exitButton.setForeground(Color.white);
 		panel.add(exitButton);
 
-		String DATADIRECTORY = "C:\\bootcamp\\chapter04";
+		String DATADIRECTORY = "C:\\bootcamp\\bootcamp\\chapter04";
 		File dir = new File(DATADIRECTORY);
 
 		FileFilter filter = new FileFilter() {
