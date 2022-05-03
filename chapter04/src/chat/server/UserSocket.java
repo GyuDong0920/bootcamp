@@ -31,6 +31,7 @@ public class UserSocket extends Thread  {
 	public UserSocket(Socket socket, ServerGUI mContext) {
 		this.userSocket = socket;
 		this.mContext = mContext;
+
 		netWork();
 	}
 	
@@ -46,17 +47,17 @@ public class UserSocket extends Thread  {
 			userName = dataInputStream.readUTF(); // 한글 일본어 등 UTF로 닉네임 받아줌
 			System.out.println("userName " +  userName);
 			//System.out.println();
-			//mContext.getTextArea().append("<<" + userName + ">> 입장\n");
+			mContext.getTextArea().append("<<" + userName + ">> 입장\n");
 			
 			
-////			// 기존 유저에게 알림
-			mContext.getServerNetWork().announCement("NewUser/" + userName);
+			// 기존 유저에게 알림
+//			mContext.getServerNetWork().announCement("NewUser/" + userName);
 //
-			// 자신에게 현재 접속 중인 유저를 알린다.
-//			for (int i = 0; i < mContext.vc.size(); i++) {
-//				User user = mContext.vc.elementAt(i);
+//			// 자신에게 현재 접속 중인 유저를 알린다.
+//			for (int i = 0; i <i ; i++) {
+//				UserSocket user = mContext.getServerNetWork().getVc().elementAt(i);
 //				sendMessage("OldUser/" + user.userName);
-//			}
+		
 //			for (int i = 0; i < mContext.chRoom.size(); i++) {
 //				chatRoom room = mContext.chRoom.elementAt(i);
 //				sendMessage("OldRoom/" + room.roomName);

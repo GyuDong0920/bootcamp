@@ -31,18 +31,18 @@ public class ServerNetWork {
 	public void setNetwork() {
 
 		try {
-			// 서버소켓 생성과 동시에 포트에 연결
+	
 			serverSocket = new ServerSocket(port);
-			mContext.getTextArea().append("서버를 실행하겠습니다.\n");
+			mContext.getTextArea().append("User wating.\n");
 			connect();
 		} catch (IOException e) {
-			// 예외처리 메세지 문구가 뜨는 창
-			JOptionPane.showMessageDialog(null, "이미 사용중인 포트입니다.", "Error", JOptionPane.ERROR_MESSAGE);
+			
+			JOptionPane.showMessageDialog(null, "", "Error", JOptionPane.ERROR_MESSAGE);
 			mContext.getStartbutton().setEnabled(true);
 			mContext.getStopButton().setEnabled(false);
 		} catch (Exception e) {
-			// 숫자가 아닌 값을 넣었을 때
-			JOptionPane.showMessageDialog(null, "잘못입력하였습니다.", "Error", JOptionPane.ERROR_MESSAGE);
+			
+			JOptionPane.showMessageDialog(null, "잘못입력하셨습니다..", "Error", JOptionPane.ERROR_MESSAGE);
 
 		}
 	}
@@ -53,13 +53,14 @@ public class ServerNetWork {
 			public void run() {
 				while (true) {
 					try {
-						mContext.getTextArea().append(mContext.getTextField().getText() + "port" + " 접속 대기중...\n");
+						mContext.getTextArea().append(mContext.getTextField().getText() + "port" + " �젒�냽 ��湲곗쨷...\n");
 						socket = serverSocket.accept();
 						UserSocket userSocket = new UserSocket(socket, mContext);
+						System.out.println("==========");
 						userSocket.start();
 
 					} catch (IOException e) {
-						mContext.getTextArea().append("서버 중지 @Server ON 버튼을 눌러주세요.\n");
+						mContext.getTextArea().append("접속에 실패했습니다.\n");
 						break;
 
 					}
@@ -70,7 +71,7 @@ public class ServerNetWork {
 		th.start();
 	}
 
-	// 전체 메세지
+	
 	public void announCement(String str) {
 		for (int i = 0; i < vc.size(); i++) {
 			UserSocket userSocket = vc.elementAt(i);
@@ -85,9 +86,21 @@ public class ServerNetWork {
 		String message = st.nextToken();
 
 		if (protocol.equals("Note")) {
+			st = new StringTokenizer(message, "@");
+			String user = st.nextToken();
+			String note = st.nextToken();
 			
+			for (int i = 0; i < vc.size(); i++) {
+				UserSocket socket = vc.elementAt(i);
+				if(socket.getUserName().equals(user)) {
+					socket.sendMessage("Note/" + socket.getUserName() + "@" + note);
+				}
+			}
 		} else if (protocol.equals("CreateRoom")) {
-
+			for(int i = 0; i < chRoom.size(); i++) {
+				chatRoom room = chRoom.elementAt(i);
+			
+			}
 			
 
 		} else if (protocol.equals("Chatting")) {
@@ -100,6 +113,14 @@ public class ServerNetWork {
 	}
 
 	public class chatRoom {
+		// 룸 정보
+		String roomName;
+		Vector<UserSocket> roomUservc = new Vector<UserSocket>();
+		
+		public chatRoom() {
+			
+		}
+						
+					}
 
-	}
 }
