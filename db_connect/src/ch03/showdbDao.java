@@ -102,10 +102,10 @@ public class showdbDao implements IShowdbDao{
 		 // swing 
 		 // 웹 브라우저 
 		 // 모바일 
-			/*
-			 * ArrayList<BuyDto> buylist = dao.innerjoin1("이순신", "김유신");
-			 * System.out.println("buylist :" + buylist);
-			 */
+			
+			 ArrayList<BuyDto> buylist = dao.innerjoin1("이순신", "김유신");
+			 System.out.println("buylist :" + buylist);
+			 
 		 
 		 
 			
