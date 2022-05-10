@@ -1,4 +1,4 @@
-package ch04;
+package ch05;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -9,11 +9,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DBClient {
+public class DBClient2 {
 
 	private static final String DB_HOST = "localhost";
 	private static final int DB_PORT = 3306;
-	private static final String DB_DATABASE_NAME = "employees";
+	private final String DB_DATABASE_NAME; 
 	private static final String DB_CHARSET = "UTF-8";
 	private static final String DB_USER_NAME = "root";
 	private static final String DB_PASSWORD = "asd123";
@@ -22,15 +22,15 @@ public class DBClient {
 	private Connection conn = null;
 
 	// 싱글톤 처리
-	private static DBClient dbClient;
+	private static DBClient2 dbClient;
 
-	private DBClient() {
-
+	private DBClient2(String dbName) {
+		DB_DATABASE_NAME = dbName;
 	}
 
-	public static DBClient getInstance() {
+	public static DBClient2 getInstance(String dbName) {
 		if (dbClient == null) {
-			dbClient = new DBClient();
+			dbClient = new DBClient2(dbName);
 		}
 		return dbClient;
 	}

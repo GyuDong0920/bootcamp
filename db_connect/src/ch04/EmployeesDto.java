@@ -20,7 +20,7 @@ public class EmployeesDto {
  private int salary;
  private String dept_no;
  private String title;
- private char gender;
+ private String gender;
  private String birth_date;
  private String last_name;
  private String hire_date;

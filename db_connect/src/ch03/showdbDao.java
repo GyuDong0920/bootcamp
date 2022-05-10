@@ -6,12 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import ch04.DBClient2;
 import lombok.ToString;
 @ToString
 public class showdbDao implements IShowdbDao{
 
 	
-	private DBClient client;
+	private DBClient2 client;
 	private Connection connection;
 	ResultSet resultSet = null;
 	
@@ -19,7 +20,7 @@ public class showdbDao implements IShowdbDao{
 	
 	
 	public showdbDao() {
-		client = DBClient.getInstance();
+		client = DBClient2.getInstance("showdb");
 		connection = client.getConnection();
 		//innerjoin1(null);
 	}
