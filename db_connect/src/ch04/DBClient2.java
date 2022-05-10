@@ -6,9 +6,10 @@ import java.sql.SQLException;
 
 import lombok.Getter;
 import lombok.Setter;
-
+ 
 @Getter
 @Setter
+
 public class DBClient2 {
 
 	private static final String DB_HOST = "localhost";

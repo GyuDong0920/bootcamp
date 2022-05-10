@@ -1,6 +1,6 @@
 package ch05;
 
-
+ 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,4 +25,5 @@ public class EmployeesDto2 {
 	 private String birth_date;
 	 private String last_name;
 	 private String hire_date;
+	 
 }

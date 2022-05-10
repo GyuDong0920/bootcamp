@@ -1,7 +1,7 @@
 package ch05;
 
 import java.util.ArrayList;
-
+ 
 public interface Iemployees2 {
 	// 최고연봉을 받는 사람의 정보를 출력해주세요
 	EmployeesDto2 maxSalary();
